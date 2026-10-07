@@ -13,14 +13,14 @@ public class Juego extends InterfaceJuego
 	// ESTO ES UN PRUEBA
 	// Variables y métodos propios de cada grupo
 	// ...
+	Jugador jugador;
 	
 	Juego()
 	{
 		// Inicializa el objeto entorno
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		
-		// Inicializar lo que haga falta para el juego
-		// ...
+		jugador = new Jugador(400, 500, 30, 30);
 
 		// Inicia el juego!
 		this.entorno.iniciar();
@@ -36,7 +36,7 @@ public class Juego extends InterfaceJuego
 	{
 		// Procesamiento de un instante de tiempo
 		// ...
-		
+		jugador.dibujar(entorno);
 	}
 	
 
