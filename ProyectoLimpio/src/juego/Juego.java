@@ -37,6 +37,22 @@ public class Juego extends InterfaceJuego
 		// Procesamiento de un instante de tiempo
 		// ...
 		jugador.dibujar(entorno);
+		
+		if(entorno.estaPresionada('w')) {
+			jugador.moverArriba();
+		}
+		
+		if(entorno.estaPresionada('a')) {
+			jugador.moverIzquierda();
+		}
+		
+		if(entorno.estaPresionada('d')) {
+			jugador.moverDerecha();
+		}
+		
+		if(entorno.estaPresionada('s')) {
+			jugador.moverAbajo();
+		}
 	}
 	
 
