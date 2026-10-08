@@ -38,19 +38,19 @@ public class Juego extends InterfaceJuego
 		// ...
 		jugador.dibujar(entorno);
 		
-		if(entorno.estaPresionada('w')) {
+		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0) {
 			jugador.moverArriba();
 		}
 		
-		if(entorno.estaPresionada('a')) {
+		if(entorno.estaPresionada('a') && jugador.bordeIzquierdo() > 0) {
 			jugador.moverIzquierda();
 		}
 		
-		if(entorno.estaPresionada('d')) {
+		if(entorno.estaPresionada('d') && jugador.bordeDerecho() < entorno.ancho()) {
 			jugador.moverDerecha();
 		}
 		
-		if(entorno.estaPresionada('s')) {
+		if(entorno.estaPresionada('s') && jugador.bordeInferior() < entorno.alto()) {
 			jugador.moverAbajo();
 		}
 	}
