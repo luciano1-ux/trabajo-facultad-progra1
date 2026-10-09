@@ -14,6 +14,7 @@ public class Juego extends InterfaceJuego
 	// Variables y métodos propios de cada grupo
 	// ...
 	Jugador jugador;
+	Mapa_manzanas mapa;
 	
 	Juego()
 	{
@@ -21,6 +22,8 @@ public class Juego extends InterfaceJuego
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		
 		jugador = new Jugador(400, 500, 30, 30);
+		
+		mapa = new Mapa_manzanas();
 
 		// Inicia el juego!
 		this.entorno.iniciar();
@@ -36,6 +39,7 @@ public class Juego extends InterfaceJuego
 	{
 		// Procesamiento de un instante de tiempo
 		// ...
+		mapa.dibujar(entorno);
 		jugador.dibujar(entorno);
 		
 		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0) {
@@ -53,6 +57,8 @@ public class Juego extends InterfaceJuego
 		if(entorno.estaPresionada('s') && jugador.bordeInferior() < entorno.alto()) {
 			jugador.moverAbajo();
 		}
+		
+		
 	}
 	
 
