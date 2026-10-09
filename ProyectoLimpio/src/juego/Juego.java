@@ -21,7 +21,7 @@ public class Juego extends InterfaceJuego
 		// Inicializa el objeto entorno
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		
-		jugador = new Jugador(400, 500, 30, 30);
+		jugador = new Jugador(400, 500, 20, 20);
 		
 		mapa = new Mapa_manzanas();
 
@@ -42,20 +42,35 @@ public class Juego extends InterfaceJuego
 		mapa.dibujar(entorno);
 		jugador.dibujar(entorno);
 		
-		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0) {
+		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0  ) {
 			jugador.moverArriba();
+			
+			if(mapa.colicionaconManzanas(jugador)) {
+				jugador.moverAbajo();
+			}
 		}
 		
 		if(entorno.estaPresionada('a') && jugador.bordeIzquierdo() > 0) {
 			jugador.moverIzquierda();
+			
+			if(mapa.colicionaconManzanas(jugador)) {
+				jugador.moverDerecha();
+			}
 		}
 		
 		if(entorno.estaPresionada('d') && jugador.bordeDerecho() < entorno.ancho()) {
 			jugador.moverDerecha();
+			if(mapa.colicionaconManzanas(jugador)) {
+				jugador.moverIzquierda();
+			}
 		}
 		
 		if(entorno.estaPresionada('s') && jugador.bordeInferior() < entorno.alto()) {
 			jugador.moverAbajo();
+			
+			if(mapa.colicionaconManzanas(jugador)) {
+				jugador.moverArriba();
+			}
 		}
 		
 		

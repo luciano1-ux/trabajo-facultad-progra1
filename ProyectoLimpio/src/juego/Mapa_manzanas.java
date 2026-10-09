@@ -1,5 +1,4 @@
 package juego;
-
 import entorno.Entorno;
 
 public class Mapa_manzanas {
@@ -26,5 +25,19 @@ public class Mapa_manzanas {
 	    for (int i = 0; i < manzanas.length; i++) {
 	        manzanas[i].dibujar(entorno);
 	    }
+	}
+
+	//colicion con manzanas
+	
+	public boolean colicionaconManzanas(Jugador jugador) {
+
+	    for (int i = 0; i < manzanas.length; i++) {
+
+	        if (jugador.bordeIzquierdo() < manzanas[i].bordeDerechoM() && jugador.bordeDerecho() > manzanas[i].bordeIzquierdoM()  &&  jugador.bordeSuperior() < manzanas[i].bordeInferiorM() && jugador.bordeInferior() > manzanas[i].bordeSuperiorM()) {
+	        	return true;
+	        }
+	    }
+
+	    return false;
 	}
 }
