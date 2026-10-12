@@ -7,7 +7,7 @@ import entorno.Entorno;
 import entorno.InterfaceJuego;
 
 public class Juego extends InterfaceJuego
-{
+{   //cualquier cosa
 	// El objeto Entorno que controla el tiempo y otros
 	private Entorno entorno;
 	// ESTO ES UN PRUEBA
