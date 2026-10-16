@@ -15,7 +15,9 @@ public class Juego extends InterfaceJuego
 	// ...
 	Jugador jugador;
 	Mapa_manzanas mapa;
+	Generacion_enemigos enemigo;
 	
+		
 	Juego()
 	{
 		// Inicializa el objeto entorno
@@ -24,6 +26,9 @@ public class Juego extends InterfaceJuego
 		jugador = new Jugador(400, 500, 20, 20);
 		
 		mapa = new Mapa_manzanas();
+		
+		enemigo = new Generacion_enemigos();
+		
 
 		// Inicia el juego!
 		this.entorno.iniciar();
@@ -41,6 +46,8 @@ public class Juego extends InterfaceJuego
 		// ...
 		mapa.dibujar(entorno);
 		jugador.dibujar(entorno);
+		enemigo.dibujar(entorno);
+		
 		
 		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0  ) {
 			jugador.moverArriba();

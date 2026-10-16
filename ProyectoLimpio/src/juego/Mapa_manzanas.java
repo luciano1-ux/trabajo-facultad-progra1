@@ -8,13 +8,13 @@ public class Mapa_manzanas {
 	public Mapa_manzanas() {
 	    int indice = 0;
 
-	    for (int fila = 0; fila < 4; fila++) {
-	        for (int columna = 0; columna < 4; columna++) {
+	    for (int vertical = 0; vertical < 4; vertical++) {
+	        for (int horizontal = 0; horizontal < 4; horizontal++) {
 
-	            int x = 100 + columna * 200;
-	            int y = 100 + fila * 140;
+	            int x = 100 + horizontal * 200;
+	            int y = 100 + vertical * 140;
 
-	            manzanas[indice] = new Manzana(x, y, 140, 100);
+	            manzanas[indice] = new Manzana(x, y, 120, 90);
 
 	            indice++;
 	        }
