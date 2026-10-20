@@ -16,7 +16,7 @@ public class Juego extends InterfaceJuego
 	Jugador jugador;
 	Mapa_manzanas mapa;
 	Generacion_enemigos enemigo;
-	
+	Enemigo enemigo_;
 		
 	Juego()
 	{
@@ -48,7 +48,7 @@ public class Juego extends InterfaceJuego
 		jugador.dibujar(entorno);
 		enemigo.dibujar(entorno);
 		
-		
+		// jugador
 		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0  ) {
 			jugador.moverArriba();
 			
@@ -79,7 +79,8 @@ public class Juego extends InterfaceJuego
 				jugador.moverArriba();
 			}
 		}
-		
+		// enemigo
+		enemigo.moverenemigos();
 		
 	}
 	

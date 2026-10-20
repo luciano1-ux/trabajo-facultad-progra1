@@ -28,16 +28,27 @@ public class Generacion_enemigos {
 	    };
 	
 	private Random random = new Random();
+	boolean[]posicionesusadas = new boolean[puntosSpawn.length];
 	
 	public Generacion_enemigos() {
+
 	    for (int i = 0; i < enemigo.length; i++) {
 
-	        int indiceAleatorio = random.nextInt(16);
+	        int indiceAleatorio = random.nextInt(puntosSpawn.length);
+
+	        while (posicionesusadas[indiceAleatorio]) {
+	            indiceAleatorio = random.nextInt(puntosSpawn.length);
+	        }
+
+	        posicionesusadas[indiceAleatorio] = true;
+
+	        int direccion = random.nextInt(4);
 
 	        Point punto = puntosSpawn[indiceAleatorio];
-	        
-	        enemigo[i] = new Enemigo(punto.x,punto.y,20,20);
 
+	        enemigo[i] = new Enemigo(
+	            punto.x, punto.y, 20, 20, direccion
+	        );
 	    }
 	}
 	    
@@ -45,10 +56,16 @@ public class Generacion_enemigos {
 	        for (int i = 0; i < enemigo.length; i++) {
 	            enemigo[i].dibujar(entorno);
 	        }
+	    }
+	        
+	    public void moverenemigos() {
+	    	for(int i=0; i < enemigo.length; i++) {
+	    		enemigo[i].mover();
+	    	}
+	    }
 	
 	}
+
 	
 
-
-}
 
