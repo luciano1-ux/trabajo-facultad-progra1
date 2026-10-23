@@ -16,14 +16,14 @@ public class Juego extends InterfaceJuego
 	Jugador jugador;
 	Mapa_manzanas mapa;
 	Generacion_enemigos enemigo;
-	Enemigo enemigo_;
+	
 		
 	Juego()
 	{
 		// Inicializa el objeto entorno
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		
-		jugador = new Jugador(400, 500, 20, 20);
+		jugador = new Jugador(400, 500, 20, 20, 3);
 		
 		mapa = new Mapa_manzanas();
 		
@@ -46,7 +46,6 @@ public class Juego extends InterfaceJuego
 		// ...
 		mapa.dibujar(entorno);
 		jugador.dibujar(entorno);
-		enemigo.dibujar(entorno);
 		
 		// jugador
 		if(entorno.estaPresionada('w') && jugador.bordeSuperior()> 0  ) {
@@ -81,6 +80,17 @@ public class Juego extends InterfaceJuego
 		}
 		// enemigo
 		enemigo.moverenemigos();
+		
+		
+		enemigo.comprobarColisiones(jugador);
+		
+		
+		enemigo.dibujar(entorno);
+		
+		
+		
+		//vida
+		entorno.escribirTexto("Vidas: " + jugador.getVida(), 60, 30);
 		
 	}
 	

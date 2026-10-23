@@ -52,19 +52,48 @@ public class Generacion_enemigos {
 	    }
 	}
 	    
-	    public void dibujar(Entorno entorno) {
-	        for (int i = 0; i < enemigo.length; i++) {
+	public void dibujar(Entorno entorno) {
+	    for (int i = 0; i < enemigo.length; i++) {
+	        if (enemigo[i] != null) {
 	            enemigo[i].dibujar(entorno);
 	        }
 	    }
-	        
-	    public void moverenemigos() {
-	    	for(int i=0; i < enemigo.length; i++) {
-	    		enemigo[i].mover();
-	    	}
-	    }
-	
 	}
+	        
+
+public void moverenemigos() {
+    for (int i = 0; i < enemigo.length; i++) {
+        if (enemigo[i] != null) {
+            enemigo[i].mover();
+        }
+    }
+}
+
+	    
+	    //comprueba colisiones
+
+public void comprobarColisiones(Jugador jugador) {
+    for (int i = 0; i < enemigo.length; i++) {
+
+        if (enemigo[i] != null) {
+            if (jugador.perdervida(enemigo[i])) {
+
+                // Generar un enemigo nuevo
+                int indiceAleatorio = random.nextInt(puntosSpawn.length);
+                int direccion = random.nextInt(4);
+
+                Point punto = puntosSpawn[indiceAleatorio];
+
+                enemigo[i] = new Enemigo(
+                    punto.x, punto.y, 20, 20, direccion
+                );
+            }
+        }
+    }
+}
+
+
+}
 
 	
 

@@ -10,13 +10,15 @@ public class Jugador {
 	private int y;
 	private int ancho;
 	private int alto;
+	private int vida;
 	
 	
-	public Jugador(int x, int y, int ancho, int alto) {
+	public Jugador(int x, int y, int ancho, int alto, int vida) {
 		this.x = x;
 		this.y = y;
 		this.ancho = ancho;
 		this.alto = alto;
+		this.vida =vida;
 	}
 	
 	public void dibujar(Entorno p) {
@@ -42,7 +44,7 @@ public class Jugador {
 
 	
 	
-	//BORDES DE PANTALLA
+	//BORDES DE jugador
 	
 	
 	public int bordeDerecho() {
@@ -62,7 +64,22 @@ public class Jugador {
 	}
 	
 	
+	// perder vida
 	
+	
+	public boolean perdervida(Enemigo e) {
+
+	    if (bordeDerecho() > e.bordeIzquierdo() &&
+	        bordeIzquierdo() < e.bordeDerecho() &&
+	        bordeInferior() > e.bordeSuperior() &&
+	        bordeSuperior() < e.bordeInferior()) {
+
+	        vida = vida - 1;
+	        return true;
+	    }
+
+	    return false;
+	}
 	
 	
 	
@@ -172,6 +189,7 @@ public class Jugador {
 	
 	
 	//getters setters
+	
 public int getX() {
 		return x;
 	}
@@ -202,5 +220,8 @@ public int getX() {
 
 	public void setAlto(int alto) {
 		this.alto = alto;
+	}
+	public int getVida() {
+	    return vida;
 	}
 }
