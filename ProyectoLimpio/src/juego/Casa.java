@@ -19,6 +19,7 @@ public class Casa {
 		this.alto=alto;
 	}
 	
+	// Dibujamos las casas de color azul
 	public void dibujar(Entorno c) {
 		c.dibujarRectangulo(this.x, this.y, this.ancho, this.alto, 0 ,Color.blue);;
 	}

@@ -24,7 +24,7 @@ public class Negocio {
 	
 	
 	public void dibujar(Entorno n) {
-		n.dibujarRectangulo(this.x, this.y, this.ancho, this.alto, 0 ,Color.blue);;
+		n.dibujarRectangulo(this.x, this.y, this.ancho, this.alto, 0 ,Color.orange);;
 	}
 
 

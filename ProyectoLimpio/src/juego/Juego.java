@@ -16,6 +16,7 @@ public class Juego extends InterfaceJuego
 	Jugador jugador;
 	Mapa_manzanas mapa;
 	Generacion_enemigos enemigo;
+	SistemaPedidos sistemaPedidos;
 	
 		
 	Juego()
@@ -28,6 +29,7 @@ public class Juego extends InterfaceJuego
 		mapa = new Mapa_manzanas();
 		
 		enemigo = new Generacion_enemigos();
+		sistemaPedidos = new SistemaPedidos(mapa.getCasas(), mapa.getNegocios(), 60);
 		
 
 		// Inicia el juego!
@@ -82,14 +84,23 @@ public class Juego extends InterfaceJuego
 		enemigo.moverenemigos();
 		
 		
+		int vidasAntes = jugador.getVida();
 		enemigo.comprobarColisiones(jugador);
+		if (jugador.getVida() < vidasAntes) {
+			sistemaPedidos.perderPorChoque(entorno.tiempo());
+		}
 		
 		
 		enemigo.dibujar(entorno);
 		
 		
 		
-		//vida
+		// Actualizar y mostrar el pedido activo.
+        sistemaPedidos.actualizar(entorno, jugador);
+        sistemaPedidos.dibujar(entorno);
+        sistemaPedidos.dibujarHUD(entorno);
+
+        //vida
 		entorno.escribirTexto("Vidas: " + jugador.getVida(), 60, 30);
 		
 	}
