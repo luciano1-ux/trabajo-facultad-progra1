@@ -11,6 +11,7 @@ public class Jugador {
 	private int ancho;
 	private int alto;
 	private int vida;
+	private int ultimaDireccion = 2; // 0 derecha, 1 izquierda, 2 arriba, 3 abajo
 	
 	
 	public Jugador(int x, int y, int ancho, int alto, int vida) {
@@ -27,18 +28,22 @@ public class Jugador {
 	
 	//MOVIMIENTO
 	public void moverDerecha() {
+		ultimaDireccion = 0;
 		this.x=this.x+6;
 	}
 	
 	public void moverIzquierda() {
+		ultimaDireccion = 1;
 		this.x=this.x-6;
 	}
 	
 	public void moverArriba() {
+		ultimaDireccion = 2;
 		this.y=this.y-6;
 	}
 	
 	public void moverAbajo() {
+		ultimaDireccion = 3;
 		this.y=this.y+6;
 	}
 
@@ -220,6 +225,9 @@ public int getX() {
 
 	public void setAlto(int alto) {
 		this.alto = alto;
+	}
+	public int getUltimaDireccion() {
+		return ultimaDireccion;
 	}
 	public int getVida() {
 	    return vida;

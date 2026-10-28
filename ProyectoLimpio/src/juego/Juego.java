@@ -17,6 +17,7 @@ public class Juego extends InterfaceJuego
 	Mapa_manzanas mapa;
 	Generacion_enemigos enemigo;
 	SistemaPedidos sistemaPedidos;
+	Proyectil proyectil;
 	
 		
 	Juego()
@@ -81,6 +82,7 @@ public class Juego extends InterfaceJuego
 			}
 		}
 		// enemigo
+        enemigo.reponerEnemigos();
 		enemigo.moverenemigos();
 		
 		
@@ -91,6 +93,21 @@ public class Juego extends InterfaceJuego
 		}
 		
 		
+		// Solo se crea un disparo cuando no hay otro en vuelo.
+        if (entorno.sePresionoBoton(entorno.BOTON_IZQUIERDO) && proyectil == null) {
+            proyectil = new Proyectil(jugador.getX(), jugador.getY(), jugador.getUltimaDireccion());
+        }
+
+        if (proyectil != null) {
+            proyectil.mover();
+            if (enemigo.impactoDeProyectil(proyectil) ||
+                proyectil.fueraDelMapa(entorno.ancho(), entorno.alto())) {
+                proyectil = null;
+            } else {
+                proyectil.dibujar(entorno);
+            }
+        }
+
 		enemigo.dibujar(entorno);
 		
 		

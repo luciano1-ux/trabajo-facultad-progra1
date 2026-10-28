@@ -93,6 +93,29 @@ public void comprobarColisiones(Jugador jugador) {
 }
 
 
+    // El enemigo alcanzado se elimina del arreglo.
+    public boolean impactoDeProyectil(Proyectil proyectil) {
+        for (int i = 0; i < enemigo.length; i++) {
+            if (enemigo[i] != null && proyectil.chocaCon(enemigo[i])) {
+                enemigo[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Reponemos los enemigos eliminados para mantener cuatro en el mapa.
+    public void reponerEnemigos() {
+        for (int i = 0; i < enemigo.length; i++) {
+            if (enemigo[i] == null) {
+                int indiceAleatorio = random.nextInt(puntosSpawn.length);
+                int direccion = random.nextInt(4);
+                Point punto = puntosSpawn[indiceAleatorio];
+                enemigo[i] = new Enemigo(punto.x, punto.y, 20, 20, direccion);
+            }
+        }
+    }
+
 }
 
 	
